@@ -92,7 +92,7 @@ function fetchWeather(resultLat, resultLong,respo){
     if(e.keyCode == 13){
     getlocation(city.value);
     }
-
+    city.blur();
   });
   
 
