@@ -2,6 +2,7 @@ const submit = document.getElementById('submit');
 const temp = document.getElementById('temp');
 const city = document.getElementById('city');
 const temp_name = document.getElementById('temp_name');
+const temp_name2 = document.getElementById('temp_name2');
 const result = document.getElementById("results");
 const loader = document.getElementById('loader');
 const country_capital = document.getElementById("country_capital");
@@ -27,21 +28,29 @@ function fetchWeather(resultLat, resultLong,respo){
         temperature  = response.current_weather;
         temp.innerHTML = parseInt( temperature.temperature)+ "<span>°C</span>";
         cityvalue = city.value;
+        cityvalue2 = city2.value;
         windspeed.innerHTML = temperature.windspeed + 'km/h';
         if(cityvalue.length){
           temp_name.innerHTML = city.value.charAt(0).toUpperCase() + cityvalue.slice(1);
+         
+
+        }
+        if(cityvalue2.length){
+          temp_name2.innerHTML = city2.value.charAt(0).toUpperCase() + cityvalue2.slice(1);
         }
         // console.log(respo[0].display_name);
         city.value = '';
+        city2.value = '';
         city.blur();
+        city2.blur();
         hideloader();
       })
       .catch((err) => console.error(err));
   }
   
-  async function getlocation(city) {
+  async function getlocation(city,city2) {
     
-    let locUrl = `https://nominatim.openstreetmap.org/search?format=json&limit=5&country=india&q=${city}`;
+    let locUrl = `https://nominatim.openstreetmap.org/search?format=json&limit=5&country=india&q=${city || city2}`;
   
     const locOption = {
       method: "GET",
@@ -71,7 +80,7 @@ function fetchWeather(resultLat, resultLong,respo){
   
         fetchWeather(resultLat, resultLong,respo);
       })
-      .catch((err) => alert(`${err} , Place not found or check spell pls`));
+      .catch((err) => alert(`Place not found or check address spelling`));
   }
   
   function containsSpecialChars(str) {
@@ -92,6 +101,15 @@ function fetchWeather(resultLat, resultLong,respo){
     // console.log(city)
     if(e.keyCode == 13){
     getlocation(city.value);
+    }
+   
+  });
+  city2.addEventListener("keyup", async (e) => {
+    // console.log("clicked")
+    e.preventDefault();
+    // console.log(city)
+    if(e.keyCode == 13){
+    getlocation(city2.value);
     }
    
   });
@@ -120,6 +138,7 @@ window.addEventListener('load',()=>{
     .then((data)=> {
       country_capital.innerHTML = data.country_name +" " + data.postal;
       temp_name.innerHTML = data.country_capital;
+      temp_name2.innerHTML = data.country_capital;
       console.log(data.postal)
       console.log(data.latitude);
       console.log(data.longitude);

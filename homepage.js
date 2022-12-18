@@ -36,9 +36,12 @@ toggle2.onclick = function(){
 }
 
 
-profilebtn.onclick = function(){
+profilebtn.click = function(){
     profile_con.classList.toggle("show")
 }
+
+
+
 
 
 

@@ -621,9 +621,6 @@ p {
     width: 6vw;
 }
 
-.middle-section {
-    /* width: 54vw; */
-}
 
 .right-section {
     width: 40vw;
@@ -751,6 +748,10 @@ p {
 
 
 
+.smallscreencity{
+    display: none;
+}
+
 
 
 
@@ -787,7 +788,9 @@ p {
     .con-2-items img {
         width: 2.8em;
     }
-
+.bigscreencity{
+    display: flex;
+}
 
 
 }
@@ -861,5 +864,11 @@ p {
         display: none;
         opacity: 0;
         visibility: hidden;
+    }
+    .smallscreencity{
+        display: flex;
+    }
+    .bigscreencity{
+        display: none;
     }
 }
