@@ -46,18 +46,47 @@
         <div class="middle-section">
             <!---- nav side bar from here -->
             <div class="navbar">
-                
+
+                <div class="hamburger">
+                    <div class="logo" id="logo-small"><i class="fa-solid fa-wind"></i> </div>
+                    <div class="hamburger-column showslide" id="hamburgur">
+                        <div id="close" class="closebtn">
+                            <i class="fa-solid fa-xmark" id="hidden"></i>
+                        </div>
+                            <div class="hamburger-items"><a href="/">Home</a></div>
+                            <div class="hamburger-items"><a href="/cities">Cities</a></div>
+                            <div class="hamburger-items"><a href="/map">Map</a></div>
+                            <div class="hamburger-items"><a href="/setting">Settings</a></div>
+                    </div>
+                </div>
+                <!---- search bar from here -->
+                <div class="search-bar searchsmall">
+                    <input class="search-bar-input search-small" id="city" type="text" placeholder="Search for cities">
+                </div>
+
+                <div class="profile-section">
+                    <div class="profile-btn" id="profilebtn"></div>
+                    <div class="profile-container" id="profile_con">
+                        <p class="profile-items"><a href="/">Profile</a></p>
+                        <p class="profile-items"><a href="/">Weather</a></p>
+                        <p class="profile-items"><a href="/">Account</a></p>
+                        <p class="profile-items"><a href="/">Setting</a></p>
+                        <p class="toggle-btn" id="toggle2">
+                            <i class="indicator"></i>
+                        </p>
+                    </div>
+
+                </div>
             </div>
-
-
 
 
 
 
             <!---- search bar from here -->
-            <div class="search-bar">
+            <div class="search-bar searchbarMain">
                 <input class="search-bar-input" id="city" type="text" placeholder="Search for cities">
             </div>
+
 
             <!---- container-1 from here -->
             <div class="container-1">
@@ -188,7 +217,18 @@
             <div class="toggle-btn" id="toggle">
                 <i class="indicator"></i>
             </div>
-            <div class="profile-btn">
+            <!-- <div class="profile-btn"></div> -->
+            <div class="profile-section">
+                <div class="profile-btn" id="profilebtn"></div>
+                <div class="profile-container" id="profile_con">
+                    <p class="profile-items"><a href="/">Profile</a></p>
+                    <p class="profile-items"><a href="/">Weather</a></p>
+                    <p class="profile-items"><a href="/">Account</a></p>
+                    <p class="profile-items"><a href="/">Setting</a></p>
+                    <p class="toggle-btn" id="toggle2">
+                        <i class="indicator"></i>
+                    </p>
+                </div>
 
             </div>
         </div>
