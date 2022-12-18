@@ -80,7 +80,12 @@ function fetchWeather(resultLat, resultLong,respo){
   
         fetchWeather(resultLat, resultLong,respo);
       })
-      .catch((err) => alert(`Place not found or check address spelling`));
+      .catch(() => {
+        alert("Cannot found this address")
+        hideloader();
+        
+      });
+      // .catch(() => alert(`Place not found or check address spelling`));
   }
   
   function containsSpecialChars(str) {
