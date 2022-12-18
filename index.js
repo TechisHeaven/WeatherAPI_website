@@ -33,6 +33,7 @@ function fetchWeather(resultLat, resultLong,respo){
         }
         // console.log(respo[0].display_name);
         city.value = '';
+        city.blur();
         hideloader();
       })
       .catch((err) => console.error(err));
@@ -92,7 +93,7 @@ function fetchWeather(resultLat, resultLong,respo){
     if(e.keyCode == 13){
     getlocation(city.value);
     }
-    city.blur();
+   
   });
   
 
