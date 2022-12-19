@@ -4,13 +4,19 @@ const side_bar = document.getElementsByClassName('side-bar');
 const sidebaritems = document.getElementsByClassName('weather');
 const searchInput = document.getElementById('city');
 const profilebtn = document.getElementById('profilebtn');
-// const profile_con = document.getElementById('profile_con')
 const toggle = document.getElementById('toggle')
 const toggle2 = document.getElementById('toggle2')
-const headingdark = document.getElementById("temp");
+const tempmain = document.getElementById("temp");
 const city2 = document.getElementById('city2');
-var overlay = document.getElementById('backgroundOverlay')
+const overlay = document.getElementById('backgroundOverlay')
+const logo1 = document.getElementById('logo1')
+const logo = document.querySelector('logo')
+const sidebarmain1 = document.getElementById("sidebarmain1");
 
+const con2item  = document.getElementsByClassName("con-2-items");
+
+
+const sidebar = document.getElementById("sidebar")
 
 toggle.onclick = function(){
     toggle.classList.toggle('active');
@@ -23,8 +29,11 @@ toggle.onclick = function(){
     subnav_bar.classList.toggle('active')
     searchInput.classList.toggle('active');
     side_bar[0].classList.toggle('dark');
-    sidebaritems[0].classList.toggle('active');
-    headingdark.classList.toggle("active")
+    tempmain.classList.toggle("active")
+    for (let indexforbag = 0; indexforbag < con2item.length; indexforbag++) {
+        con2item[indexforbag].classList.toggle("active");
+      
+    }
 }
 
 toggle2.onclick = function(){
@@ -38,9 +47,44 @@ toggle2.onclick = function(){
     subnav_bar.classList.toggle('active')
     searchInput.classList.toggle('active');
     profile_con.classList.toggle('active'); 
-    headingdark.classList.toggle("active")
+    tempmain.classList.toggle("active")
     city2.classList.toggle("active")
+    for (let indexforbag = 0; indexforbag < con2item.length; indexforbag++) {
+        con2item[indexforbag].classList.toggle("active");
+        console.log("enterd data");
+    }
 }
+
+
+const items = document.getElementsByClassName("items");
+
+logo1.onclick = function(){
+    sidebarmain1.classList.toggle("active");
+    for(let i = 0; i < items.length; i++) {
+        items[i].classList.toggle("active");
+    }
+   
+}
+
+
+
+
+
+// navoptions[0].onclick = function(){
+//         navoptions[0].classList.toggle("activelink")
+// }
+
+
+
+
+
+
+// const navoptions = document.querySelectorAll("navoptions");
+
+
+
+
+
 
 
 
@@ -57,7 +101,6 @@ profilebtn.onclick = function(e){
         profile_con.classList.toggle("show")
         console.log('removed sir')
      
-        overlay.style.display = 'block';
     }
 
 
@@ -90,5 +133,31 @@ close.onclick = function(){
 
 }
 
+
+
+
+
+const current_time = document.getElementById("current_time");
+
+
+
+
+function formatAMPM(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+  }
+
+current_time.innerHTML = formatAMPM(new Date);
+
+
+  
+  
+  console.log(formatAMPM(new Date));
 
 

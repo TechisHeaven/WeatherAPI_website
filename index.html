@@ -17,27 +17,26 @@
 </head>
 
 <body class="body" id="body">
-    <div id="backgroundOverlay">
 
     <div class="loader" id="loader">
     </div>
     <div class="first-section">
 
-        <div class="sidebar side-bar" id="sidebar_con">
-            <div class="logo"><i class="fa-solid fa-wind"></i></div>
+        <div class="sidebar1 side-bar sidebarmain" id="sidebarmain1">
+            <div class="logo1" id="logo1"><i class="fa-solid fa-wind"></i></div>
             <div class="nav-items">
                 <ul>
-                    <li class="weather nav-options"><i class="fa-solid fa-cloud"></i>
-                        <p>Weather</p>
+                    <li class="navoptions activelink"><i class="fa-solid fa-cloud"></i>
+                        <p class="items">Weather</p>
                     </li>
-                    <li class="nav-options"><i class="fa fa-regular fa-list"></i>
-                        <p>Cities</p>
+                    <li class="navoptions"><i class="fa fa-regular fa-list"></i>
+                        <p class="items">Cities</p>
                     </li>
-                    <li class="nav-options"><i class="fa-sharp fa-solid fa-map"></i>
-                        <p>Map</p>
+                    <li class="navoptions" ><i class="fa-sharp fa-solid fa-map"></i>
+                        <p class="items">Map</p>
                     </li>
-                    <li class="nav-options"><i class="fa fa-regular fa-gear"></i>
-                        <p>Settings</p>
+                    <li class="navoptions"><i class="fa fa-regular fa-gear"></i>
+                        <p class="items">Settings</p>
                     </li>
                 </ul>
             </div>
@@ -99,14 +98,14 @@
                         <h1 class="headings-dark bigscreencity" id="temp_name"></h1>
                         <h1 class="headings-dark smallscreencity" id="temp_name2"></h1>
                         <p id="country_capital">Delhi</p>
-                        <p>chance of rain : <span>0%</span></p>
+                        <p>Current time : <span id="current_time">04:00</span></p>
                     </div>
-                    <div class="con-1-temp ">
+                    <div class="con-1-temp">
                         <p class="temprature-value headings-dark" id="temp">0<span>°C</span></p>
                     </div>
                 </div>
                 <div class="con-2-right">
-                    <img src="images/sun.png" alt="weather-info">
+                    <img id="mainimg" src="images/sun.png" alt="weather-info">
                 </div>
             </div>
 
@@ -117,6 +116,16 @@
                     <p>TODAY'S FORSCAST</p>
                 </div>
                 <div class="con-2-sub-con-2">
+                    <div class="con-2-items">
+                        <p>12 AM</p>
+                        <img src="images/sun.png" alt="">
+                        <p class="con-2-items-temp dark-theme-temp">20°</p>
+                    </div>
+                    <div class="con-2-items">
+                        <p>3 AM</p>
+                        <img src="images/sun.png" alt="">
+                        <p class="con-2-items-temp dark-theme-temp">20°</p>
+                    </div>
                     <div class="con-2-items">
                         <p>6 AM</p>
                         <img src="images/sun.png" alt="">
@@ -152,6 +161,11 @@
                         <img src="images/sun.png" alt="">
                         <p class="con-2-items-temp dark-theme-temp">22°</p>
                     </div>
+                    <div class="con-2-items">
+                        <p>12 AM</p>
+                        <img src="images/sun.png" alt="">
+                        <p class="con-2-items-temp dark-theme-temp">22°</p>
+                    </div>
 
                 </div>
             </div>
@@ -171,7 +185,7 @@
                         </div>
                         <div class="con-3-subcon-item-2">
                             <p>Real Feel</p>
-                            <p class="con-3-temp dark-theme-temp">30<span>°C</span></p>
+                            <p class="con-3-temp dark-theme-temp" id="feel_Like">30<span>°C</span></p>
                         </div>
                     </div>
 
@@ -192,8 +206,8 @@
                             <i class="fa-solid fa-droplet"></i>
                         </div>
                         <div class="con-3-subcon-item-2">
-                            <p>Chance of Rain</p>
-                            <p class="con-3-temp dark-theme-temp">0%</p>
+                            <p>Rain</p>
+                            <p class="con-3-temp dark-theme-temp" id="rain">0%</p>
                         </div>
                     </div>
 
@@ -205,7 +219,7 @@
                         </div>
                         <div class="con-3-subcon-item-2">
                             <p>UV Index</p>
-                            <p class="con-3-temp dark-theme-temp">3</p>
+                            <p class="con-3-temp dark-theme-temp">0</p>
                         </div>
                     </div>
 
@@ -292,7 +306,6 @@
             </div>
         </div>
     </div>
-</div>
     <script src="homepage.js"></script>
     <script src="index.js"></script>
     <script src="https://kit.fontawesome.com/0002286476.js" crossorigin="anonymous"></script>

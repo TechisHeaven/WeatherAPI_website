@@ -8,7 +8,7 @@ const loader = document.getElementById('loader');
 const country_capital = document.getElementById("country_capital");
 const postalcode = document.getElementById("postalcode");
 const windspeed = document.getElementById("windspeed");
-
+const con2tempvalue = document.getElementsByClassName("con-2-items-temp");
 
 
 function fetchWeather(resultLat, resultLong,respo){
@@ -18,22 +18,76 @@ function fetchWeather(resultLat, resultLong,respo){
   
     ResultLatitude = resultLat;
     ResultLongitude = resultLong;
+
+    let urlmain = `https://api.open-meteo.com/v1/forecast?latitude=${ResultLatitude}&longitude=${ResultLongitude}&hourly=temperature_2m,rain&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=Asia%2FSingapore`;
   
     fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${ResultLatitude}&longitude=${ResultLongitude}&current_weather=true`,
+      urlmain,
       options
     )
       .then((response) => response.json())
       .then((response) => {
         temperature  = response.current_weather;
+        feel_Like.innerHTML  = response.current_weather.temperature + `<span>°C</span>`;
         temp.innerHTML = parseInt( temperature.temperature)+ "<span>°C</span>";
         cityvalue = city.value;
         cityvalue2 = city2.value;
+        console.log(response.current_weather.weathercode)
+        if (response.current_weather.weathercode == 0){
+          rain.innerHTML  = "Clear ";
+          mainimg.src = "images/sun.png";
+        }
+        if (response.current_weather.weathercode == 1){
+          rain.innerHTML  = "Mostly Clear";
+          mainimg.src = "images/clear-sky.png" ;
+        }
+        else if (response.current_weather.weathercode == 2 || 3 || 45 || 48){
+          rain.innerHTML  = "Partly cloudy";
+          mainimg.src = "images/cloud.png"
+        }
+        else if (response.current_weather.weathercode == 51 || 53 || 55){
+          rain.innerHTML  = "Drizzle";
+          mainimg.src = "images/cloud-rainny.png";
+        }
+        else if (response.current_weather.weathercode == 56 || 57){
+          rain.innerHTML  = "Freezing Drizzle";
+          mainimg.src = "images/drezzeling.png";
+        }
+        else if (response.current_weather.weathercode == 61 || 63 || 65 || 66 || 67|| 80|| 81|| 82){
+          rain.innerHTML  = "Raining";
+          mainimg.src = "images/Rainning.png";
+        }
+        
+        else if (response.current_weather.weathercode == 71||  73||75|| 77 ){
+          rain.innerHTML  = "Snow fall";
+          mainimg.src = "images/drezzeling.png";
+        }
+        else if (response.current_weather.weathercode == 85|| 86){
+          rain.innerHTML  = "Snow Shower";
+          mainimg.src = "images/drezzeling.png";
+        }
+        else if (response.current_weather.weathercode == 95 || 96 || 99){
+          rain.innerHTML  = "Thunderstorm";
+          mainimg.src = "images/thunder.png";
+        }
+
+        tempWholeday = response.hourly.temperature_2m.slice(0,25);
+        // tempWholeday.splice(2,2) // inly first value will change not the second for 8 times
+        
+        for (let index = 1; index <= 8; index++) {
+          tempWholeday.splice(index,2)
+        }
+
+
+        for (let indexoftemp = 0; indexoftemp < tempWholeday.length; indexoftemp++) {
+          // const element = con2tempvalue[indexoftemp];
+          con2tempvalue[indexoftemp].innerHTML = tempWholeday[indexoftemp] + `°C`;
+        }
+
+
         windspeed.innerHTML = temperature.windspeed + 'km/h';
         if(cityvalue.length){
           temp_name.innerHTML = city.value.charAt(0).toUpperCase() + cityvalue.slice(1);
-         
-
         }
         if(cityvalue2.length){
           temp_name2.innerHTML = city2.value.charAt(0).toUpperCase() + cityvalue2.slice(1);
@@ -172,3 +226,15 @@ window.addEventListener('load',()=>{
 
 
   // end here -- on page load loader- -------------------------
+
+
+
+
+
+
+const scrollContainer = document.getElementsByClassName('con-2-sub-con-2');
+
+scrollContainer[0].addEventListener("wheel", (evt) => {
+  evt.preventDefault();
+  scrollContainer[0].scrollLeft += evt.deltaY;
+});
