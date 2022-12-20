@@ -70,21 +70,6 @@ logo1.onclick = function(){
 
 
 
-// navoptions[0].onclick = function(){
-//         navoptions[0].classList.toggle("activelink")
-// }
-
-
-
-
-
-
-// const navoptions = document.querySelectorAll("navoptions");
-
-
-
-
-
 
 
 
@@ -158,6 +143,6 @@ current_time.innerHTML = formatAMPM(new Date);
 
   
   
-  console.log(formatAMPM(new Date));
+//   console.log(formatAMPM(new Date));
 
 
