@@ -966,7 +966,9 @@ p {
     .searchbarMain {
         display: none;
     }
-
+    .smallscreencity{
+        font-size: 1.8em;
+    }
    
     .profile-section {
         display: flex;
@@ -1001,6 +1003,7 @@ p {
     }
     .con-2-sub-con-2 {
         overflow-x: scroll;
+        width: 80vw;
     }
 
     .con-2-right img {

@@ -37,7 +37,7 @@ function fetchWeather(resultLat, resultLong,respo){
           rain.innerHTML  = "Clear ";
           mainimg.src = "images/sun.png";
         }
-        if (response.current_weather.weathercode == 1){
+        else if (response.current_weather.weathercode == 1){
           rain.innerHTML  = "Mostly Clear";
           mainimg.src = "images/clear-sky.png" ;
         }
