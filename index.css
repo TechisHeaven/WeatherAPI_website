@@ -889,6 +889,12 @@ p {
 
 
 
+.minmax{
+    display: flex;
+}
+
+
+
 .hamburger-column{
     display: none;
     position: fixed;

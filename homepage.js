@@ -165,16 +165,15 @@ body.onclick = function(e){
 }
 
 
-body.oncontextmenu = async function(ev){
+body.oncontextmenu = function(ev){
     context.classList.add("active")
     ev.preventDefault()
-    await setInterval(() => {
-        context.classList.add("trans")
+    setInterval(() => {
+        context.classList.add("trans");
     }, 3000);
-    await setInterval(() => {
+    setInterval(() => {
         context.classList.remove("active")
     }, 4000);
-    clearTimeout(1)
 }
 
 closeContextbtn1.onclick = function(){

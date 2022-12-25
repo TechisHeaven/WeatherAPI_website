@@ -12,7 +12,8 @@ const con2tempvalue = document.getElementsByClassName("con-2-items-temp");
 const mainimg = document.getElementById("mainimg");
 const rain = document.getElementById("rain");
 const imgweather = document.getElementsByClassName("imgcode");
-
+const dailyforcimg =  document.getElementsByClassName("dailyforcimg");
+const weathername =  document.getElementsByClassName("weathername");
 
 
 
@@ -20,40 +21,87 @@ function weathercheck(weathercoderesult){
   if (weathercoderesult == 0){
     rain.innerHTML  = "Clear ";
     mainimg.src = "images/sun.png";
-    
+    dailyforcimg.src ="images/sun.png";
   }
   else if (weathercoderesult == 1){
     rain.innerHTML  = "Mostly Clear";
     mainimg.src = "images/clear-sky.png";
+    dailyforcimg.src = "images/clear-sky.png";
   }
   else if (weathercoderesult == 2 || weathercoderesult == 3 || weathercoderesult == 45 || weathercoderesult == 48){
     rain.innerHTML  = "Partly cloudy";
     mainimg.src = "images/cloud.png"
+    dailyforcimg.src = "images/cloud.png"
   }
   else if (weathercoderesult == 61 || weathercoderesult == 62 || weathercoderesult == 63 || weathercoderesult == 65 || weathercoderesult == 66 || weathercoderesult ==67|| weathercoderesult ==80|| weathercoderesult ==81||weathercoderesult == 82){
     rain.innerHTML  = "Raining";
     mainimg.src = "images/Raining.png";
+    dailyforcimg.src = "images/Raining.png";
   }
   else if (weathercoderesult == 51 ||weathercoderesult == 53 ||weathercoderesult == 55){
     rain.innerHTML  = "Drizzle";
     mainimg.src = "images/cloud-rainny.png";
+    dailyforcimg.src = "images/cloud-rainny.png";
   }
   else if (weathercoderesult == 56 ||weathercoderesult == 57){
     rain.innerHTML  = "Freezing Drizzle";
     mainimg.src = "images/drezzeling.png";
+    dailyforcimg.src = "images/drezzeling.png";
   }
   
   else if (weathercoderesult == 71 ||weathercoderesult ==  73 || weathercoderesult ==75 ||weathercoderesult == 77 ){
     rain.innerHTML  = "Snow fall";
     mainimg.src = "images/drezzeling.png";
+    dailyforcimg.src = "images/drezzeling.png";
   }
   else if (weathercoderesult == 85||weathercoderesult == 86){
     rain.innerHTML  = "Snow Shower";
     mainimg.src = "images/drezzeling.png";
+    dailyforcimg.src = "images/drezzeling.png";
   }
   else if (weathercoderesult == 95 ||weathercoderesult == 96 ||weathercoderesult == 99){
     rain.innerHTML  = "Thunderstorm";
     mainimg.src = "images/thunder.png";
+    dailyforcimg.src = "images/thunder.png";
+  }
+}
+function DailyForcImg(weathercodedaily,dayi){
+  if (weathercodedaily == 0){
+    dailyforcimg[dayi].src ="images/sun.png";
+    weathername[dayi].innerHTML = 'Sunny';
+  }
+  else if (weathercodedaily == 1){
+    dailyforcimg[dayi].src = "images/clear-sky.png";
+    weathername[dayi].innerHTML = 'Clear Sky';
+  }
+  else if (weathercodedaily == 2 || weathercodedaily == 3 || weathercodedaily == 45 || weathercodedaily == 48){
+    dailyforcimg[dayi].src = "images/cloud.png"
+    weathername[dayi].innerHTML = 'Cloud';
+  }
+  else if (weathercodedaily == 61 || weathercodedaily == 62 || weathercodedaily == 63 || weathercodedaily == 65 || weathercodedaily == 66 || weathercodedaily ==67|| weathercodedaily ==80|| weathercodedaily ==81||weathercodedaily == 82){
+    dailyforcimg[dayi].src = "images/Raining.png";
+    weathername[dayi].innerHTML = 'Rainny';
+  }
+  else if (weathercodedaily == 51 ||weathercodedaily == 53 ||weathercodedaily == 55){
+    dailyforcimg[dayi].src = "images/cloud-rainny.png";
+    weathername[dayi].innerHTML = 'Cloud Rainny';
+  }
+  else if (weathercodedaily == 56 ||weathercodedaily == 57){
+    dailyforcimg[dayi].src = "images/drezzeling.png";
+    weathername[dayi].innerHTML = 'Drezzeling';
+  }
+  
+  else if (weathercodedaily == 71 ||weathercodedaily ==  73 || weathercodedaily ==75 ||weathercodedaily == 77 ){
+    dailyforcimg[dayi].src = "images/drezzeling.png";
+    weathername[dayi].innerHTML = 'Drezzeling';
+  }
+  else if (weathercodedaily == 85||weathercodedaily == 86){
+    dailyforcimg[dayi].src = "images/drezzeling.png";
+    weathername[dayi].innerHTML = 'Drezzeling';
+  }
+  else if (weathercodedaily == 95 ||weathercodedaily == 96 ||weathercodedaily == 99){
+    dailyforcimg[dayi].src = "images/thunder.png";
+    weathername[dayi].innerHTML = 'Thunder';
   }
 }
 
@@ -90,6 +138,31 @@ function Imglinker(weathercodeWholeday,indexoftemp) {
 }
 
 
+
+function getdayfun(response) {
+  daysname = document.getElementsByClassName('daysname');
+  mintemp = document.getElementsByClassName('mintemp');
+  maxtemp = document.getElementsByClassName('maxtemp');
+  const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  
+  for (let dayi = 0; dayi < 7; dayi++) {
+    let dayfetch = new Date(response.daily.time[dayi]);
+    let maxfetch = response.daily.temperature_2m_max[dayi];
+    let minfetch = response.daily.temperature_2m_min[dayi];
+    let weathercodedaily = response.daily.weathercode[dayi];
+    let day = weekday[dayfetch.getDay()];
+    daysname[dayi].innerHTML = day;
+    mintemp[dayi].innerHTML = parseInt(minfetch)+`<span>°</span>`;
+    maxtemp[dayi].innerHTML = parseInt(maxfetch)+`<span>°C</span>`;
+    console.log(weathercodedaily)
+    DailyForcImg(weathercodedaily,dayi);
+  }
+  
+
+
+}
+
+
 function fetchWeather(resultLat, resultLong,respo){
     const options = {
       method: "GET",
@@ -99,7 +172,7 @@ function fetchWeather(resultLat, resultLong,respo){
     ResultLongitude = resultLong;
 
     // let urlmain = `https://api.open-meteo.com/v1/forecast?latitude=${ResultLatitude}&longitude=${ResultLongitude}&hourly=temperature_2m,rain&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=Asia%2FSingapore`;
-    let urlmain = `https://api.open-meteo.com/v1/forecast?latitude=${ResultLatitude}&longitude=${ResultLongitude}&hourly=temperature_2m,weathercode&daily=weathercode&current_weather=true&timezone=Asia%2FSingapore`
+    let urlmain = `https://api.open-meteo.com/v1/forecast?latitude=${ResultLatitude}&longitude=${ResultLongitude}&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=Asia%2FSingapore`
     fetch(
       urlmain,
       options
@@ -141,13 +214,21 @@ function fetchWeather(resultLat, resultLong,respo){
         if(cityvalue2.length){
           temp_name2.innerHTML = city2.value.charAt(0).toUpperCase() + cityvalue2.slice(1);
         }
+
+        getdayfun(response);
+
+
+
         city.value = '';
         city2.value = '';
         city.blur();
         city2.blur();
         hideloader();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err)
+        hideloader();
+      });
   }
   
   async function getlocation(city,city2) {
