@@ -1188,3 +1188,13 @@ p {
         display: none;
     }
 }
+
+
+@media (max-width: 400px) {
+        main{
+            width: 92vw;
+        }
+        .contextmenu{
+            width: 300px;
+        }
+}
