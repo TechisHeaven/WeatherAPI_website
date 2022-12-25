@@ -163,20 +163,21 @@ body.onclick = function(e){
         profile_con.classList.remove('show')
     }
 }
-
-
-body.oncontextmenu = function(ev){
+body.addEventListener('contextmenu', (ev)=>{
     context.classList.add("active")
     ev.preventDefault()
-    setInterval(() => {
+    setTimeout(() => {
         context.classList.add("trans");
     }, 3000);
-    setInterval(() => {
+   
+    setTimeout(() => {
         context.classList.remove("active")
+        context.classList.remove("trans");
     }, 4000);
-}
+})
+
 
 closeContextbtn1.onclick = function(){
-    clearInterval();
     context.classList.remove("active");
+    context.classList.remove("trans");
 }
