@@ -51,7 +51,6 @@ toggle2.onclick = function(){
     city2.classList.toggle("active")
     for (let indexforbag = 0; indexforbag < con2item.length; indexforbag++) {
         con2item[indexforbag].classList.toggle("active");
-        console.log("enterd data");
     }
 }
 
@@ -84,7 +83,6 @@ profilebtn.onclick = function(e){
     }
     else{
         profile_con.classList.toggle("show")
-        console.log('removed sir')
      
     }
 
@@ -143,6 +141,24 @@ current_time.innerHTML = formatAMPM(new Date);
 
   
   
-//   console.log(formatAMPM(new Date));
 
 
+
+
+
+document.onclick = function(e){
+    if (e.target.id !== 'sidebarmain1'&& e.target.id !== 'navitem' && e.target.id !== 'logo1' && e.target.id !== 'click1') {
+        sidebarmain1.classList.remove("active");
+        for(let i = 0; i < items.length; i++) {
+            items[i].classList.remove("active");
+        }
+    }
+}
+
+
+
+body.onclick = function(e){
+    if (e.target.id !== 'profilebtn' && e.target.id !== 'profile_con' && e.target.id !== 'toggle2' && e.target.id !== 'indi') {
+        profile_con.classList.remove('show')
+    }
+}

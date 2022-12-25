@@ -352,7 +352,7 @@ main {
     margin-left: 1em;
     border-radius: 20px;
     /* display: block; */
-    position: sticky;
+    /* position: sticky; */
     height: 100%;
     transition: .3s;
 }
@@ -423,7 +423,6 @@ main {
 
 .nav-items ul {
     list-style: none;
-    
     display: block;
     position: relative;
     flex-direction: column;

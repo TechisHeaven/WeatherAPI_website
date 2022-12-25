@@ -17,7 +17,6 @@ const imgweather = document.getElementsByClassName("imgcode");
 
 
 function weathercheck(weathercoderesult){
-
   if (weathercoderesult == 0){
     rain.innerHTML  = "Clear ";
     mainimg.src = "images/sun.png";
@@ -273,6 +272,5 @@ window.addEventListener('load',()=>{
 const scrollContainer = document.getElementsByClassName('con-2-sub-con-2');
 
 scrollContainer[0].addEventListener("wheel", (evt) => {
-  evt.preventDefault();
   scrollContainer[0].scrollLeft += evt.deltaY * 3;
 },{passive: true});
