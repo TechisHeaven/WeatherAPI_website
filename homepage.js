@@ -62,7 +62,7 @@ logo1.onclick = function(){
     for(let i = 0; i < items.length; i++) {
         items[i].classList.toggle("active");
     }
-   
+   firstsec.classList.toggle("active")
 }
 
 
@@ -152,6 +152,7 @@ document.onclick = function(e){
         for(let i = 0; i < items.length; i++) {
             items[i].classList.remove("active");
         }
+        firstsec.classList.remove("active")
     }
 }
 
@@ -161,4 +162,22 @@ body.onclick = function(e){
     if (e.target.id !== 'profilebtn' && e.target.id !== 'profile_con' && e.target.id !== 'toggle2' && e.target.id !== 'indi') {
         profile_con.classList.remove('show')
     }
+}
+
+
+body.oncontextmenu = async function(ev){
+    context.classList.add("active")
+    ev.preventDefault()
+    await setInterval(() => {
+        context.classList.add("trans")
+    }, 3000);
+    await setInterval(() => {
+        context.classList.remove("active")
+    }, 4000);
+    clearTimeout(1)
+}
+
+closeContextbtn1.onclick = function(){
+    clearInterval();
+    context.classList.remove("active");
 }
