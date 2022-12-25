@@ -92,7 +92,10 @@ body.active {
     gap: 20px;
     right: -500px;
 }
-
+.contextmenu i{
+    color: red;
+    font-size: 1.5em;
+}
 
 .contextmenu.active{
     display: flex;
