@@ -152,7 +152,6 @@ body.addEventListener("contextmenu", (ev) => {
   }
   closeContextbtn1.addEventListener("click", function(){
       clearTimeout(timeout, timeout2);
-      console.log("cleared");
       context.classList.remove("active");
       context.classList.remove("trans");
   })

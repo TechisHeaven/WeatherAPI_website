@@ -274,7 +274,6 @@ function fetchWeather(resultLat, resultLong, respo) {
 
 
       let visib = response.hourly.visibility.slice(0,24);
-      console.log(visib);
       const gethour = new Date();
       let hour = gethour.getHours();
       vis.innerHTML = parseInt(visib[hour]/1000) + `Km`;
