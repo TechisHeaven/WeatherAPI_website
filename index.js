@@ -226,7 +226,7 @@ function fetchWeather(resultLat, resultLong, respo) {
   ResultLongitude = resultLong;
 
   // let urlmain = `https://api.open-meteo.com/v1/forecast?latitude=${ResultLatitude}&longitude=${ResultLongitude}&hourly=temperature_2m,rain&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=Asia%2FSingapore`;
-  let urlmain = `https://api.open-meteo.com/v1/forecast?latitude=${ResultLatitude}&longitude=${ResultLongitude}&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=Asia%2FSingapore`;
+  let urlmain = `https://api.open-meteo.com/v1/forecast?latitude=${ResultLatitude}&longitude=${ResultLongitude}&hourly=temperature_2m,visibility,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=Asia%2FSingapore`;
   fetch(urlmain, options)
     .then((response) => response.json())
     .then((response) => {
@@ -271,6 +271,14 @@ function fetchWeather(resultLat, resultLong, respo) {
         temp_name2.innerHTML =
           city2.value.charAt(0).toUpperCase() + cityvalue2.slice(1);
       }
+
+
+      let visib = response.hourly.visibility.slice(0,24);
+      console.log(visib);
+      const gethour = new Date();
+      let hour = gethour.getHours();
+      vis.innerHTML = parseInt(visib[hour]/1000) + `Km`;
+
 
       getdayfun(response);
 
