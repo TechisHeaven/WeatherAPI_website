@@ -1197,4 +1197,8 @@ p {
         .contextmenu{
             width: 300px;
         }
+        .contextmenu::before{
+            max-width: 295px;
+            animation: progress 4s linear forwards;
+        }
 }
